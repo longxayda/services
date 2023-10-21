@@ -1,18 +1,20 @@
-const express = require('express');
-const cors  = require('cors');
-const { electricityUsage} = require('./api');
+import express from 'express';
+import cors from 'cors';
+import { electricApp } from './api/electricityUsage.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-module.exports = async (app) => {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-    app.use(express.json());
-    app.use(cors());
-    app.use(express.static(__dirname + '/public'))
+export const expressApp = async (app) => {
+  app.use(express.json());
+  app.use(cors());
+  app.use(express.static(__dirname + '/public'));
 
-    //api
-    // appEvents(app);
+  //api
+  // appEvents(app);
 
-
-    electricityUsage(app);
-    // error handling
-    
-}
+  electricApp(app);
+  // error handling
+};

@@ -1,4 +1,5 @@
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config();
 // if (process.env.NODE_ENV !== "prod") {
 //   const configFile = `./.env`;
 //   console.log(configFile)
@@ -7,7 +8,5 @@ require('dotenv').config()
 //   dotEnv.config();
 // }
 
-module.exports = {
-  PORT: process.env.PORT,
-  DB_URL: process.env.MONGODB_URI,
-};
+export const PORT = process.env.PORT;
+export const DB_URL = process.env.MONGODB_URI;
