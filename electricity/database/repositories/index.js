@@ -5,7 +5,7 @@ export class ElectricRepository {
     try {
       // Find the document by userId
       console.log(userId);
-      const userUsage = await ElectricUsageModel.findAll();
+      const userUsage = await ElectricUsageModel.findOne({userId});
       console.log(userUsage);
 
       if (!userUsage) {
@@ -27,10 +27,8 @@ export class ElectricRepository {
   async getCurrentElectricityCost(userId) {
     try {
       // Find the document by userId
-      console.log(await ElectricUsageModel.find());
       // console.log(userId);
-      // const userUsage = await ElectricUsageModel.findAll();
-      console.log(userUsage);
+      const userUsage = await ElectricUsageModel.findOne({userId});``
 
       if (!userUsage) {
         throw new Error('User not found'); // Handle the case where the user is not found

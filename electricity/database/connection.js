@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const { DB_URL } = require('../config');
+import mongoose from 'mongoose';
+import { DB_URL } from '../config/index.js';
 
-module.exports = async() => {
+export const databaseConnection = async() => {
 
     try {
         await mongoose.connect(DB_URL, {
@@ -17,3 +17,4 @@ module.exports = async() => {
     }
  
 };
+
