@@ -22,7 +22,7 @@ const electricUsageSchema = new mongoose.Schema({
     type: Date,
     default: Date.now, // Set the default value to the current time
   },
-});
+}, {collection: 'ElectricUsage'});
 
 const ElectricUsage = mongoose.model('ElectricUsage', electricUsageSchema);
 
