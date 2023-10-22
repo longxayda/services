@@ -10,9 +10,17 @@ const StartServer = async () => {
 
   await expressApp(app);
 
+  const data = {
+    userId: 123,
+    lastWaterConsumption: 12,
+    currentWaterConsumption: 20,
+    lastPaid: new Date(),
+    createdAt: new Date(),
+  };
+
   app
     .listen(PORT, () => {
-      console.log(`Electricity service listening to port ${PORT}`);
+      console.log(`Water service listening to port ${PORT}`);
     })
     .on("error", (err) => {
       console.log(err);
