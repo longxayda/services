@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 const waterUsageSchema = new mongoose.Schema(
@@ -17,7 +18,7 @@ const waterUsageSchema = new mongoose.Schema(
     },
     lastPaid: {
       type: Date,
-      required: true,
+      // required: true,
     },
     createdAt: {
       type: Date,
@@ -27,4 +28,40 @@ const waterUsageSchema = new mongoose.Schema(
   { collection: "waterUsage" }
 );
 
+const waterPaymentSchema = new mongoose.Schema(
+  {
+    paymentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      require: true,
+      default: new ObjectId(),
+    },
+    userId: {
+      type: String,
+      required: true,
+    },
+    amount: {
+      type: Number,
+      required: true,
+    },
+    isPaid: {
+      type: Boolean,
+      require: true,
+      default: false,
+    },
+    paidAt: {
+      type: Date,
+      default: null,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+  { collection: "waterPayment" }
+);
+
+export const waterPaymentModel = mongoose.model(
+  "waterPayment",
+  waterPaymentSchema
+);
 export const waterUsageModel = mongoose.model("waterUsage", waterUsageSchema);
