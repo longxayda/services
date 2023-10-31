@@ -3,5 +3,4 @@ import { databaseConnection } from './database/connection.js';
 
 const interval = 2 * 1000; // 60,000 milliseconds (1 minute)
 await databaseConnection();
-console.log('hereeee');
 setInterval(generateAndSaveMockData, interval);
